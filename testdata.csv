@@ -1,0 +1,58 @@
+card type,card cost (cmc),activated ability cost (cmc),colour,activated ability colour,name
+creature,2,,cg,,Wolf-Skull Shman
+sorcery,4,,xggg,,Genesis Wave
+enchantment,1,1,g,x,Helix Pinnacle
+creature,4,,cccg,,Drove of Elves
+creature,1,-1,g,g,Llonawar Elves
+creature,2,,cg,,Wolf-Skull Shman
+creature,4,,cccg,,Drove of Elves
+land,0,,g,,Forest
+land,0,,g,,Forest
+creature,2,-1,cg,g/b/k,Urborg Elf
+creature,4,,cccg,,Oracle of Mul Daya
+land,0,,g,,Forest
+creature,3,,ccg,,Titania’s Chosen
+creature,5,,ccccg,,Wren’s Run Vanquisher
+land,0,,g,,Forest
+creature,2,,cg,,Wolf-Skull Shman
+land,0,,g,,Forest
+land,0,,g,,Forest
+land,0,,g,,Forest
+sorcery,4,,xggg,,Genesis Wave
+creature,2,-1,cg,g,Quirion Elves
+creature,1,-1,g,g,Llonawar Elves
+land,0,,g,,Forest
+land,0,,g,,Forest
+land,0,,g,,Forest
+creature,2,-1,cg,g,Heart Warden
+land,0,,g,,Forest
+creature,3,,ccg,,Lys Alana Bowmaster
+land,0,,g,,Forest
+land,0,,g,,Forest
+creature,3,,ccg,,Lys Alana Bowmaster
+creature,3,,ccg,,Winnower Patrol
+creature,2,-1,cg,g,Leaf Gilder
+creature,1,,g,,Llanowar Elite
+creature,2,-1,cg,g,Skyshroud Elf
+creature,2,-1,cg,g,Heart Warden
+creature,4,8,ccgg,cccccccc,Wildheart Invoker
+creature,1,1,g,g,Elvish Herder
+land,0,,g,,Forest
+land,0,,g,,Forest
+creature,3,,ccg,,Winnower Patrol
+artifiact equipment,2,2,cc,cc,Bladed Pinions
+artifiact equipment,2,2,cc,cc,Kitesail
+creature,7,2,cccccgg,cc,Wirewood Guardian
+creature,2,-1,cg,g,Skyshroud Elf
+creature,2,-1,cg,g/b/k,Urborg Elf
+creature,4,,cccg,,Drove of Elves
+artifiact equipment,2,2,cc,cc,Kitesail
+land,0,,g,,Forest
+creature,2,-1,cg,c,Quirion Explorer
+land,0,,g,,Forest
+creature,2,-1,cg,g,Quirion Elves
+creature,2,-1,cg,c,Quirion Explorer
+creature,2,8,cg,cccccccg,Stonewood Invoker
+enchantment,1,1,g,x,Helix Pinnacle
+land,0,,g,,Forest
+land,0,,g,,Forest

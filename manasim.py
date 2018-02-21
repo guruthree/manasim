@@ -12,7 +12,7 @@ with open(DATAFILE, 'r') as csvfile:
     i = 0
     for row in datareader:
         if i != 0:
-            deck = np.append(deck, row[1])
+            deck = np.append(deck, np.int8(row[1]))
         i += 1
 
 library = np.array(deck)
@@ -46,12 +46,10 @@ while turn < 1:#20:
         numMana += 1
     hand = hand[1:]
 
-    # this wants to be canplay = hand > 2, but for some reason doesn't work?
-    canplay = np.zeros(hand.size, dtype=np.int8)
-    for card in hand:
-        type(card)
-#        if card > 0 and card <= numMana:
-#            canplay[ii] = 1
+    # which individual cards could be played?
+    # multiple cards per turn will need to be handled at some point
+    canplay = np.logical_and(hand > 0, hand <= numMana)
+    print(canplay)
 
     # discard at random
     if len(hand) > 7:

@@ -27,12 +27,13 @@ hand = library[0:7]
 hand = np.sort(hand)
 #print(hand)
 library = library[7:]
-print(library)
+#print(library)
 #print(len(library))
 
 
 turn = 0
 numMana = 0
+# need something to keep track of how many cards were played each turn
 
 # will eventually need to sort out if you start first or your opponent does
 while turn < 1:#20:
@@ -48,7 +49,14 @@ while turn < 1:#20:
 
     # which individual cards could be played?
     # multiple cards per turn will need to be handled at some point
+    freeMana = numMana
     canplay = np.logical_and(hand > 0, hand <= numMana)
+    while freeMana > 0 and np.sum(canplay) > 0:
+        # choose a card to play at random from those that can be played
+        # play that card
+        # update freeMana
+        # update cards that could be played this turn
+        # canplay = np.logical_and(hand > 0, hand <= numMana)
     print(canplay)
 
     # discard at random
@@ -56,5 +64,5 @@ while turn < 1:#20:
         1
     turn += 1
 
-print(hand)
-print(library)
+#print(hand)
+#print(library)

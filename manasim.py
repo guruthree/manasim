@@ -15,4 +15,16 @@ with open(DATAFILE, 'r') as csvfile:
             deck = np.append(deck, row[1])
         i += 1
 
-print(deck)
+library = np.array(deck)
+# shuffle the deck
+np.random.shuffle(library)
+#print(deck)
+print(library)
+print(len(library))
+
+hand = library[0:7]
+hand = np.sort(hand)
+print(hand)
+library = library[7:]
+print(library)
+print(len(library))

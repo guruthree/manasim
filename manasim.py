@@ -4,7 +4,7 @@ import numpy as np
 
 DATAFILE='testdata.csv'
 
-deck = np.array([]);
+deck = np.array([], dtype=np.int8);
 
 with open(DATAFILE, 'r') as csvfile:
     datareader = csv.reader(csvfile)
@@ -35,14 +35,27 @@ turn = 0
 numMana = 0
 
 # will eventually need to sort out if you start first or your opponent does
-while turn < 20:
+while turn < 1:#20:
     # draw
     hand = np.append(hand, library[0])
     library = library[1:]
     hand = np.sort(hand)
 
+    # play a land if you can
+    if hand[0] == 0:
+        numMana += 1
+    hand = hand[1:]
 
+    # this wants to be canplay = hand > 2, but for some reason doesn't work?
+    canplay = np.zeros(hand.size, dtype=np.int8)
+    for card in hand:
+        type(card)
+#        if card > 0 and card <= numMana:
+#            canplay[ii] = 1
 
+    # discard at random
+    if len(hand) > 7:
+        1
     turn += 1
 
 print(hand)

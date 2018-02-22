@@ -42,11 +42,13 @@ def printcurrenthand(hand):
     print(hand)
 
 # will eventually need to sort out if you start first or your opponent does
-while turn < 1:#20:
-    print("Starting turn...")
+while turn < 20:
+    print("Starting turn %i ..." % turn)
 
     # draw
     hand = np.append(hand, library[0])
+    print("Drawing a card:")
+    print(library[0])
     library = library[1:]
     hand = np.sort(hand)
 
@@ -58,12 +60,18 @@ while turn < 1:#20:
         numMana += 1
         hand = hand[1:]
         printcurrenthand(hand)
+    print("Current mana count:")
+    print(numMana)
 
     # which individual cards could be played?
-    # multiple cards per turn will need to be handled at some point
+    # will need to aventually take into account the chance
+    #                     the player doesn't want to play a card?
     freeMana = numMana
-    canplay = np.logical_and(hand > 0, hand <= numMana)
+    canplay = np.logical_and(hand > 0, hand <= freeMana)
     while freeMana > 0 and np.sum(canplay) > 0:
+        print("Untapped mana:")
+        print(freeMana)
+
         # choose a card to play at random from those that can be played
         k = np.flatnonzero(canplay == True)
         choice = np.random.choice(k)
@@ -80,7 +88,7 @@ while turn < 1:#20:
         printcurrenthand(hand)
         
         # update cards that could be played this turn
-        canplay = np.logical_and(hand > 0, hand <= numMana)
+        canplay = np.logical_and(hand > 0, hand <= freeMana)
     if freeMana == 0:
         print("No mana left to play a card, continuing turn")
     elif np.sum(canplay) == 0:

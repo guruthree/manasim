@@ -35,6 +35,7 @@ turn = 0 # how many turns we have "played"
 numMana = 0 # how much many we have played
 # need something to keep track of how many cards were played each turn
 cardsPerTurn = np.array([], dtype=np.int8)
+freeManaPerTurn = np.array([], dtype=np.int8)
 
 
 def printcurrenthand(hand):
@@ -44,6 +45,9 @@ def printcurrenthand(hand):
 # will eventually need to sort out if you start first or your opponent does
 while turn < 20:
     print("Starting turn %i ..." % (turn + 1))
+
+    cardsPerTurn = np.append(cardsPerTurn, 0)
+    freeManaPerTurn = np.append(freeManaPerTurn, 0)
 
     # draw
     hand = np.append(hand, library[0])
@@ -83,6 +87,8 @@ while turn < 20:
         freeMana -= hand[choice]
         print("Playing: ")
         print(hand[choice])
+        cardsPerTurn[-1] += 1
+
         # remove card from hand
         hand = np.append(hand[0:choice], hand[choice+1:])
         printcurrenthand(hand)
@@ -96,6 +102,8 @@ while turn < 20:
         print(freeMana)
         print("No cards that can be played this turn")
 
+    freeManaPerTurn[-1] = freeMana
+
     # discard at random
     if len(hand) > 7:
         choice = np.random.choice(range(0, len(hand)))
@@ -107,6 +115,7 @@ while turn < 20:
     print("End of turn")
     print("")
 
-#print(hand)
-#print(library)
+print(library)
+print(cardsPerTurn)
+print(freeManaPerTurn)
 

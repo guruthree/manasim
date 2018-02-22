@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 import csv
 import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.ticker import FormatStrFormatter
 
 DATAFILE='testdata.csv'
 
@@ -33,9 +35,12 @@ library = library[7:]
 
 turn = 0 # how many turns we have "played"
 numMana = 0 # how much many we have played
+
 # need something to keep track of how many cards were played each turn
 cardsPerTurn = np.array([], dtype=np.int8)
+totalManaPerTurn = np.array([], dtype=np.int8)
 freeManaPerTurn = np.array([], dtype=np.int8)
+cardsAtEndOfTurn = np.array([], dtype=np.int8)
 
 
 def printcurrenthand(hand):
@@ -63,9 +68,11 @@ while turn < 20:
         print("Playing a land")
         numMana += 1
         hand = hand[1:]
+        cardsPerTurn[-1] += 1
         printcurrenthand(hand)
     print("Current mana count:")
     print(numMana)
+    totalManaPerTurn = np.append(totalManaPerTurn, numMana)
 
     # which individual cards could be played?
     # will need to aventually take into account the chance
@@ -103,10 +110,11 @@ while turn < 20:
         print("No cards that can be played this turn")
 
     freeManaPerTurn[-1] = freeMana
+    cardsAtEndOfTurn = np.append(cardsAtEndOfTurn, len(hand))
 
     # discard at random
     if len(hand) > 7:
-        choice = np.random.choice(range(0, len(hand)))
+        choice = np.random.choice(np.arange(0, len(hand)))
         hand = np.append(hand[0:choice], hand[choice+1:])
         print("Hand is too large, discarding a card")
         printcurrenthand(hand)
@@ -118,4 +126,16 @@ while turn < 20:
 print(library)
 print(cardsPerTurn)
 print(freeManaPerTurn)
+print(cardsAtEndOfTurn)
 
+x = np.arange(1, len(cardsPerTurn)+1)
+plt.plot(x, cardsPerTurn, '-bo', x, totalManaPerTurn, '-cD', x, freeManaPerTurn, '-rs', x, cardsAtEndOfTurn, '-g^')
+plt.axis([0, 21, 0, 10])
+plt.xlabel('Turn number')
+plt.ylabel('Numer of...')
+plt.legend(['Cards played per turn', 'Mana available at start of turn', 'Untapped mana at end of turn', 'Cards left in hand'])
+# that this is the way to do this is rediculous, but remove decimals on x-axis tick labels
+plt.gca().xaxis.set_major_formatter(FormatStrFormatter('%i'))
+
+#plt.show()
+plt.savefig('output.png', dpi=180)

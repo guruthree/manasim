@@ -53,6 +53,9 @@ while turn < 1:#20:
     canplay = np.logical_and(hand > 0, hand <= numMana)
     while freeMana > 0 and np.sum(canplay) > 0:
         # choose a card to play at random from those that can be played
+        k = np.flatnonzero(canplay == True)
+        choice = np.random.choice(k)
+
         # play that card
         # update freeMana
         # update cards that could be played this turn

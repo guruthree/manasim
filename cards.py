@@ -13,3 +13,6 @@ class Deck:
                 if i != 0: # skip first line of file (row headings)
                     self.cards = np.append(self.cards, np.int8(row[1]))
                 i += 1
+
+    def print(self):
+        print(self.cards)

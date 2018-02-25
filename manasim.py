@@ -1,23 +1,15 @@
 #!/usr/bin/env python
-import csv
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.ticker import FormatStrFormatter
 
+from cards import Deck
+
 DATAFILE='testdata.csv'
 
-deck = np.array([], dtype=np.int8);
+deck = Deck(DATAFILE)
 
-with open(DATAFILE, 'r') as csvfile:
-    datareader = csv.reader(csvfile)
-
-    i = 0
-    for row in datareader:
-        if i != 0:
-            deck = np.append(deck, np.int8(row[1]))
-        i += 1
-
-library = np.array(deck)
+library = np.array(deck.cards)
 
 # shuffle the deck
 np.random.shuffle(library)

@@ -37,10 +37,9 @@ while turn < 20:
     hand.print()
 
     # play a land if you can
-    if hand[0] == 0:
-        print("Playing a land")
+    if hand.hasLand():
+        hand.playCard(0)
         numMana += 1
-        hand = hand[1:]
         cardsPerTurn[-1] += 1
         landPerTurn[-1] += 1
         hand.print()

@@ -5,7 +5,11 @@ from matplotlib.ticker import FormatStrFormatter
 
 from cards import Deck,Library,Hand
 
+# data file that holds the deck we're investigating
 DATAFILE='testdata.csv'
+
+# the chance as 1/ODDSOFSKIP per turn that we don't play anything
+ODDSOFSKIP=10
 
 deck = Deck(DATAFILE)
 library = Library(deck)
@@ -53,22 +57,25 @@ while turn < 21:
     canplay = hand.canPlay(freeMana)
     while freeMana > 0 and np.sum(canplay) > 0:
         print("Untapped mana: %i" % freeMana)
-
-        # choose a card to play at random from those that can be played
-        k = np.flatnonzero(canplay == True)
-        choice = np.random.choice(k)
         print("Could play one of:")
         hand.print(canplay)
 
-        # play that card
-        # update freeMana
-        # remove card from hand
-        freeMana -= hand.playCard(choice)
-        cardsPerTurn[-1] += 1
-        hand.print()
-        
-        # update cards that could be played this turn
-        canplay = hand.canPlay(freeMana)
+        # do we want to play a card this turn?
+        if ODDSOFSKIP == 0 or np.random.choice(np.append(0, np.ones(ODDSOFSKIP-1, dtype=np.int8))) == 1:
+            # choose a card to play at random from those that can be played
+            choice = np.random.choice(np.flatnonzero(canplay == True))
+            # play that card
+            # update freeMana
+            # remove card from hand
+            freeMana -= hand.playCard(choice)
+            cardsPerTurn[-1] += 1
+            hand.print()
+            
+            # update cards that could be played this turn
+            canplay = hand.canPlay(freeMana)
+        else:
+            print("Declining to play a card this turn")
+            break
     if freeMana == 0:
         print("No mana left to play a card, continuing turn")
     elif np.sum(canplay) == 0:
@@ -98,7 +105,7 @@ print(cardsAtEndOfTurn)
 
 x = np.arange(1, len(cardsPerTurn)+1)
 plt.plot(x, cardsPerTurn, '-bo', x, landPerTurn, '-mh', x, totalManaPerTurn, '-cD', x, freeManaPerTurn, '-rs', x, cardsAtEndOfTurn, '-g^')
-plt.axis([0, len(cardsPerTurn)+1, 0, 10])
+plt.axis([0, len(cardsPerTurn)+1, 0, 12])
 plt.xticks(x[0::2])
 plt.xlabel('Turn number')
 plt.ylabel('Numer of...')

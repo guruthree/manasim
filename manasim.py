@@ -79,10 +79,10 @@ while turn < 20:
         print("No cards that can be played this turn")
 
     freeManaPerTurn[-1] = freeMana
-    cardsAtEndOfTurn = np.append(cardsAtEndOfTurn, len(hand))
+    cardsAtEndOfTurn = np.append(cardsAtEndOfTurn, hand.size())
 
     # discard at random
-    if len(hand) > 7:
+    if hand.size() > 7:
         choice = np.random.choice(np.arange(0, len(hand)))
         hand = np.append(hand[0:choice], hand[choice+1:])
         print("Hand is too large, discarding a card")
@@ -92,7 +92,7 @@ while turn < 20:
     print("End of turn")
     print("")
 
-print(library)
+library.print()
 print(cardsPerTurn)
 print(landPerTurn)
 print(freeManaPerTurn)

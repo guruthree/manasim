@@ -53,7 +53,11 @@ class Hand:
         acard = self.hand[positioninhand]
         if acard == 0:
             print("Playing a land")
+        else:
+            print("Playing: ")
+            print(acard)
         self.hand = np.append(self.hand[0:positioninhand], self.hand[positioninhand+1:])
+        return acard
 
     def hasLand(self):
         if self.hand[0] == 0:

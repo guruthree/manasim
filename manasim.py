@@ -64,17 +64,13 @@ while turn < 20:
 
         # play that card
         # update freeMana
-        freeMana -= hand[choice]
-        print("Playing: ")
-        hand.print(choice)
-        cardsPerTurn[-1] += 1
-
         # remove card from hand
-        hand = np.append(hand[0:choice], hand[choice+1:])
+        freeMana -= hand.playCard(choice)
+        cardsPerTurn[-1] += 1
         hand.print()
         
         # update cards that could be played this turn
-        canplay = np.logical_and(hand > 0, hand <= freeMana)
+        canplay = hand.canPlay(freeMana)
     if freeMana == 0:
         print("No mana left to play a card, continuing turn")
     elif np.sum(canplay) == 0:

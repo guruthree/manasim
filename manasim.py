@@ -43,8 +43,7 @@ while turn < 20:
         cardsPerTurn[-1] += 1
         landPerTurn[-1] += 1
         hand.print()
-    print("Current mana count:")
-    print(numMana)
+    print("Current mana count: %i" % numMana)
     totalManaPerTurn = np.append(totalManaPerTurn, numMana)
 
     # which individual cards could be played?
@@ -53,8 +52,7 @@ while turn < 20:
     freeMana = numMana
     canplay = hand.canPlay(freeMana)
     while freeMana > 0 and np.sum(canplay) > 0:
-        print("Untapped mana:")
-        print(freeMana)
+        print("Untapped mana: %i" % freeMana)
 
         # choose a card to play at random from those that can be played
         k = np.flatnonzero(canplay == True)
@@ -74,8 +72,7 @@ while turn < 20:
     if freeMana == 0:
         print("No mana left to play a card, continuing turn")
     elif np.sum(canplay) == 0:
-        print("Untapped mana:")
-        print(freeMana)
+        print("Untapped mana: %i" % freeMana)
         print("No cards that can be played this turn")
 
     freeManaPerTurn[-1] = freeMana

@@ -32,8 +32,7 @@ class Library:
 
     def draw(self):
         acard = self.library[0]
-        print("Drawing a card:")
-        print(acard)
+        print("Drawing a card: %i" % acard)
         self.library = self.library[1:]
         return acard
 
@@ -55,10 +54,9 @@ class Hand:
             print("Playing a land")
         else:
             if not discard:
-                print("Playing: ")
+                print("Playing: %i" % acard)
             else:
-                print("Discarding: ")
-            print(acard)
+                print("Discarding: %i" % acard)
         self.hand = np.append(self.hand[0:positioninhand], self.hand[positioninhand+1:])
         return acard
 

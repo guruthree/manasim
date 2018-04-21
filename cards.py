@@ -17,10 +17,26 @@ class Deck:
     def print(self):
         print(self.cards)
 
+
 class Library:
-    def __init__(self):
-        pass
+    def __init__(self, adeck):
+        self.library = np.array(adeck.cards)
+        # shuffle the library
+        np.random.shuffle(self.library)
+
+    def getHand(self):
+        ahand = self.library[0:7]
+        hand = Hand(ahand)
+        self.library = self.library[7:]
+        return hand
+
+    def print(self):
+        print(self.library)
+
 
 class Hand:
-    def __init__(self):
-        pass
+    def __init__(self, ahand):
+        self.hand = np.sort(ahand)
+
+    def print(self):
+        print(self.hand)

@@ -3,26 +3,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.ticker import FormatStrFormatter
 
-from cards import Deck
+from cards import Deck,Library,Hand
 
 DATAFILE='testdata.csv'
 
 deck = Deck(DATAFILE)
-
-library = np.array(deck.cards)
-
-# shuffle the deck
-np.random.shuffle(library)
-#print(deck)
-#print(library)
-#print(len(library))
-
-hand = library[0:7]
-hand = np.sort(hand)
-#print(hand)
-library = library[7:]
-#print(library)
-#print(len(library))
+library = Library(deck)
+hand = library.getHand()
 
 
 turn = 0 # how many turns we have "played"

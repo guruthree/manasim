@@ -25,7 +25,7 @@ cardsAtEndOfTurn = np.array([], dtype=np.int8)
 
 
 # will eventually need to sort out if you start first or your opponent does
-while turn < 20:
+while turn < 21:
     print("Starting turn %i ..." % (turn + 1))
 
     cardsPerTurn = np.append(cardsPerTurn, 0)
@@ -98,7 +98,8 @@ print(cardsAtEndOfTurn)
 
 x = np.arange(1, len(cardsPerTurn)+1)
 plt.plot(x, cardsPerTurn, '-bo', x, landPerTurn, '-mh', x, totalManaPerTurn, '-cD', x, freeManaPerTurn, '-rs', x, cardsAtEndOfTurn, '-g^')
-plt.axis([0, 21, 0, 10])
+plt.axis([0, len(cardsPerTurn)+1, 0, 10])
+plt.xticks(x[0::2])
 plt.xlabel('Turn number')
 plt.ylabel('Numer of...')
 plt.legend(['Cards played per turn', 'Lands played per turn', 'Mana available at start of turn', 'Untapped mana at end of turn', 'Cards left in hand'])

@@ -30,12 +30,23 @@ class Library:
         self.library = self.library[7:]
         return hand
 
+    def draw(self):
+        acard = self.library[0]
+        print("Drawing a card:")
+        print(acard)
+        self.library = self.library[1:]
+        return acard
+
     def print(self):
         print(self.library)
 
 
 class Hand:
     def __init__(self, ahand):
+        self.hand = np.sort(ahand)
+
+    def addCard(self, acard):
+        ahand = np.append(self.hand, acard)
         self.hand = np.sort(ahand)
 
     def print(self):

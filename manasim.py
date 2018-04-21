@@ -36,13 +36,8 @@ while turn < 20:
     freeManaPerTurn = np.append(freeManaPerTurn, 0)
 
     # draw
-    hand = np.append(hand, library[0])
-    print("Drawing a card:")
-    print(library[0])
-    library = library[1:]
-    hand = np.sort(hand)
-
-    printcurrenthand(hand)
+    hand.addCard(library.draw())
+    hand.print()
 
     # play a land if you can
     if hand[0] == 0:

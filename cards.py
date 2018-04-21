@@ -16,3 +16,11 @@ class Deck:
 
     def print(self):
         print(self.cards)
+
+class Library:
+    def __init__(self):
+        pass
+
+class Hand:
+    def __init__(self):
+        pass

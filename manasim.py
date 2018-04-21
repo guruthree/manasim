@@ -23,9 +23,6 @@ freeManaPerTurn = np.array([], dtype=np.int8)
 cardsAtEndOfTurn = np.array([], dtype=np.int8)
 
 
-def printcurrenthand(hand):
-    print("Current hand: ")
-    print(hand)
 
 # will eventually need to sort out if you start first or your opponent does
 while turn < 20:
@@ -46,7 +43,7 @@ while turn < 20:
         hand = hand[1:]
         cardsPerTurn[-1] += 1
         landPerTurn[-1] += 1
-        printcurrenthand(hand)
+        hand.print()
     print("Current mana count:")
     print(numMana)
     totalManaPerTurn = np.append(totalManaPerTurn, numMana)
@@ -75,7 +72,7 @@ while turn < 20:
 
         # remove card from hand
         hand = np.append(hand[0:choice], hand[choice+1:])
-        printcurrenthand(hand)
+        hand.print()
         
         # update cards that could be played this turn
         canplay = np.logical_and(hand > 0, hand <= freeMana)
@@ -94,7 +91,7 @@ while turn < 20:
         choice = np.random.choice(np.arange(0, len(hand)))
         hand = np.append(hand[0:choice], hand[choice+1:])
         print("Hand is too large, discarding a card")
-        printcurrenthand(hand)
+        hand.print()
 
     turn += 1
     print("End of turn")

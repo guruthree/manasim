@@ -50,4 +50,5 @@ class Hand:
         self.hand = np.sort(ahand)
 
     def print(self):
+        print("Current hand: ")
         print(self.hand)

@@ -38,6 +38,7 @@ numMana = 0 # how much many we have played
 
 # need something to keep track of how many cards were played each turn
 cardsPerTurn = np.array([], dtype=np.int8)
+landPerTurn = np.array([], dtype=np.int8)
 totalManaPerTurn = np.array([], dtype=np.int8)
 freeManaPerTurn = np.array([], dtype=np.int8)
 cardsAtEndOfTurn = np.array([], dtype=np.int8)
@@ -52,6 +53,7 @@ while turn < 20:
     print("Starting turn %i ..." % (turn + 1))
 
     cardsPerTurn = np.append(cardsPerTurn, 0)
+    landPerTurn = np.append(landPerTurn, 0)
     freeManaPerTurn = np.append(freeManaPerTurn, 0)
 
     # draw
@@ -69,6 +71,7 @@ while turn < 20:
         numMana += 1
         hand = hand[1:]
         cardsPerTurn[-1] += 1
+        landPerTurn[-1] += 1
         printcurrenthand(hand)
     print("Current mana count:")
     print(numMana)
@@ -125,15 +128,16 @@ while turn < 20:
 
 print(library)
 print(cardsPerTurn)
+print(landPerTurn)
 print(freeManaPerTurn)
 print(cardsAtEndOfTurn)
 
 x = np.arange(1, len(cardsPerTurn)+1)
-plt.plot(x, cardsPerTurn, '-bo', x, totalManaPerTurn, '-cD', x, freeManaPerTurn, '-rs', x, cardsAtEndOfTurn, '-g^')
+plt.plot(x, cardsPerTurn, '-bo', x, landPerTurn, '-mh', x, totalManaPerTurn, '-cD', x, freeManaPerTurn, '-rs', x, cardsAtEndOfTurn, '-g^')
 plt.axis([0, 21, 0, 10])
 plt.xlabel('Turn number')
 plt.ylabel('Numer of...')
-plt.legend(['Cards played per turn', 'Mana available at start of turn', 'Untapped mana at end of turn', 'Cards left in hand'])
+plt.legend(['Cards played per turn', 'Lands played per turn', 'Mana available at start of turn', 'Untapped mana at end of turn', 'Cards left in hand'])
 # that this is the way to do this is rediculous, but remove decimals on x-axis tick labels
 plt.gca().xaxis.set_major_formatter(FormatStrFormatter('%i'))
 

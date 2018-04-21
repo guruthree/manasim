@@ -60,13 +60,13 @@ while turn < 20:
         k = np.flatnonzero(canplay == True)
         choice = np.random.choice(k)
         print("Could play one of:")
-        print(hand[canplay])
+        hand.print(canplay)
 
         # play that card
         # update freeMana
         freeMana -= hand[choice]
         print("Playing: ")
-        print(hand[choice])
+        hand.print(choice)
         cardsPerTurn[-1] += 1
 
         # remove card from hand

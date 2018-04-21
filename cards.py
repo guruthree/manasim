@@ -64,6 +64,9 @@ class Hand:
     def canPlay(self, freeMana):
         return np.logical_and(self.hand > 0, self.hand <= freeMana)
 
-    def print(self):
-        print("Current hand: ")
-        print(self.hand)
+    def print(self, selection=None):
+        if selection is None:
+            print("Current hand: ")
+            print(self.hand)
+        else:
+            print(self.hand[selection])

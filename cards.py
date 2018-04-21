@@ -49,12 +49,15 @@ class Hand:
         ahand = np.append(self.hand, acard)
         self.hand = np.sort(ahand)
 
-    def playCard(self, positioninhand):
+    def playCard(self, positioninhand, discard=False):
         acard = self.hand[positioninhand]
-        if acard == 0:
+        if acard == 0 and not discard:
             print("Playing a land")
         else:
-            print("Playing: ")
+            if not discard:
+                print("Playing: ")
+            else:
+                print("Discarding: ")
             print(acard)
         self.hand = np.append(self.hand[0:positioninhand], self.hand[positioninhand+1:])
         return acard

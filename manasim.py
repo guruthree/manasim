@@ -51,7 +51,7 @@ while turn < 20:
     # will need to aventually take into account the chance
     #                     the player doesn't want to play a card?
     freeMana = numMana
-    canplay = np.logical_and(hand > 0, hand <= freeMana)
+    canplay = hand.canPlay(freeMana)
     while freeMana > 0 and np.sum(canplay) > 0:
         print("Untapped mana:")
         print(freeMana)
